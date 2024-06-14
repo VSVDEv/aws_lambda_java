@@ -1,0 +1,30 @@
+
++Websocket and JSON frameworks
+
++ TCP/IP and UDP multicast network protocols
+
++ git, GitHub, or, other source control system
+
++Jira
+
++Agile methodology
+
++(Linux, Windows) and cross platform development
+
++ (e.g. wireshark, tcpdump) 
+
+-frameworks (Robot framework)
+
+
+
+1. Have you ever worked with TCP/IP in a multi-threaded environment? yes(pet project)
+
+2. Do you have experience using non-blocking I/O? yes(pet project)
+
+3. Have you used tools like WireShark for debugging network issues? yes
+
+4. Are you familiar with the differences between UDP and TCP sockets? yes
+
+5. Have you ever implemented or worked with WebSockets? yes
+
+6. Have you done profiling, debugging, or refactoring to improve speed in a Java environment? yes

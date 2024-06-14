@@ -1,0 +1,55 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  Storage:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: Storage
+      # Lambda deployed to localstack
+      #Handler: vsvdev.App::handleRequest
+      # Lambda locally tested with localstack
+     # Handler: vsvdev.App2::handleRequest
+      Handler: vsvdev.App3::handleRequest
+      Runtime: java17
+      Architectures:
+        - x86_64
+      MemorySize: 512
+      Timeout: 15
+      Policies:
+        - S3ReadPolicy:
+            BucketName: sourceconfigbckt
+        - S3CrudPolicy:
+            BucketName: destinationconfigbckt
+      Environment:
+        Variables:
+          SOURCE_BUCKET: vsvdevsource
+          DESTINATION_BUCKET: vsvdevdestination
+          AWS_ACCESS_KEY_ID: test
+          AWS_SECRET_ACCESS_KEY: test
+          AWS_ENDPOINT_URL: s3.localhost.localstack.cloud:4566 #localstack
+          #AWS_ENDPOINT_URL: http://localhost:8080             #vsvdev emulator
+      Events:
+        FileUpload:
+          Type: S3
+          Properties:
+            Bucket: !Ref sourceconfigbckt
+            Events: s3:ObjectCreated:*
+            Filter:
+              S3Key:
+                Rules:
+                  - Name: suffix
+                    Value: '.txt'
+
+  sourceconfigbckt:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: vsvdevsource
+
+  destinationconfigbckt:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: vsvdevdestination
+      
+      
+

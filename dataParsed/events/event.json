@@ -1,0 +1,16 @@
+{
+    "name": "John",
+    "age": 30,
+    "isStudent": false,
+    "marks": [80, 85, 90],
+    "address": {
+      "city": "New York",
+      "zip": "10001"
+    },
+    "subjects": ["Math", "Science"],
+    "grades": [
+      {"subject": "Math", "grade": "A"},
+      {"subject": "Science", "grade": "A-"}
+    ]
+  }
+  
